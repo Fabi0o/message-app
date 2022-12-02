@@ -8,7 +8,7 @@ const Messages = (props) => {
     const author = props.currentUser;
     const recipient = e.target.childNodes[1].value;
     const message = e.target.childNodes[3].value;
-    Axios.post("http://localhost:3001/send", {
+    Axios.post("https://message-app-production.up.railway.app/send", {
       user: recipient,
       from: author,
       message: message,
@@ -19,7 +19,7 @@ const Messages = (props) => {
   };
   useEffect(() => {
     setInterval(() => {
-      Axios.post("http://localhost:3001/users", {
+      Axios.post("https://message-app-production.up.railway.app/users", {
         name: props.currentUser,
       }).then((res) => {
         props.setUserMessages(res.data);
