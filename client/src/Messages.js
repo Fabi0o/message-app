@@ -27,24 +27,29 @@ const Messages = (props) => {
     }, 5000);
   }, []);
   return (
-    <div>
-      <form onSubmit={sendMessage}>
-        <label htmlFor="recipient">To:</label>
+    <div className="container mt-3">
+      <form onSubmit={sendMessage} className="row sm g-1">
+        <label htmlFor="recipient" className="form-label">
+          To:
+        </label>
         <TextInput
+          className="form-control"
           Component="input"
           trigger={""}
           options={props.allUsers}
           required
         />
-        <label htmlFor="message">Message:</label>
+        <label htmlFor="message" className="form-label">
+          Message:
+        </label>
         <textarea
+          className="form-control"
           name="message"
           id="message"
-          cols="30"
-          rows="10"
+          rows="5"
           required
         ></textarea>
-        <button>Send</button>
+        <button class="btn btn-primary">Send</button>
       </form>
       {props.userMessages.map((message) => {
         return (

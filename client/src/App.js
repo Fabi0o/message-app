@@ -3,7 +3,8 @@ import Login from "./Login";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useState } from "react";
 import Messages from "./Messages";
-
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle";
 function App() {
   const [allUsers, setAllUsers] = useState([]);
   const [currentUser, setCurrentUser] = useState("");

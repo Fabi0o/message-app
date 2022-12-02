@@ -21,11 +21,15 @@ const Login = (props) => {
     });
   };
   return (
-    <form onSubmit={loginUser}>
-      <label htmlFor="name">Name:</label>
-      <input id="name" type="text" required />
-      <button>Login</button>
-    </form>
+    <div className="container">
+      <form onSubmit={loginUser} className="row">
+        <label htmlFor="name" className="m-1 form-label">
+          Name:
+        </label>
+        <input id="name" type="text" className="m-1 form-control" required />
+        <button className="btn btn-primary m-1">Login</button>
+      </form>
+    </div>
   );
 };
 
