@@ -25,7 +25,7 @@ db.getConnection((err, connection) => {
   console.log("DB connected succesful:" + connection.threadId);
 });
 
-const port = process.env.PORT;
+const port = process.env.$PORT;
 app.listen(port, () => console.log(`Server Started on port ${port}...`));
 
 app.use(express.json());
