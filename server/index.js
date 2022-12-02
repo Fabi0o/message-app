@@ -29,3 +29,41 @@ const port = process.env.PORT;
 app.listen(port, () => console.log(`Server Started on port ${port}...`));
 
 app.use(express.json());
+
+app.post("/users", (req, res) => {
+  const user = req.body.name;
+  const sqlSearch = "SELECT * FROM usermessages WHERE user = ?";
+  const search_query = mysql.format(sqlSearch, [user]);
+  db.query(search_query, (err, result) => {
+    if (err) throw err;
+    else {
+      console.log("Data sent succesful!");
+      res.send(result);
+    }
+  });
+});
+
+app.post("/send", (req, res) => {
+  const user = req.body.user;
+  const from = req.body.from;
+  const message = req.body.message;
+  const sqlInsert = "INSERT INTO usermessages VALUES (null,?,?,?)";
+  const insert_query = mysql.format(sqlInsert, [user, message, from]);
+  db.query(insert_query, (err, result) => {
+    if (err) throw err;
+    else {
+      console.log("Data insert succesful!");
+      res.status(201).send("saved");
+    }
+  });
+});
+
+app.get("/getusers", (req, res) => {
+  db.query("SELECT user FROM usermessages", (err, result) => {
+    if (err) throw err;
+    else {
+      console.log("Data sent succesful!");
+      res.send(result);
+    }
+  });
+});
